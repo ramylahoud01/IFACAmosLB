@@ -16,18 +16,30 @@ const NewsContent = () => {
       setLoading(true);
       try {
         const response = await GetNews();
-        console.log("Response status:", response.status);
+        console.log("Full response:", {
+          status: response.status,
+          ok: response.ok,
+          headers: Object.fromEntries(response.headers.entries()),
+          url: response.url,
+        });
 
         if (response.ok) {
-          // Only call response.json() once and store the result
           const data = await response.json();
           console.log("Data received:", data);
           SetNewslist(data);
         } else {
-          console.log("Error response:", response.status);
+          // Log more details about the error
+          const errorText = await response.text();
+          console.log("Error response:", {
+            status: response.status,
+            text: errorText,
+          });
         }
       } catch (error) {
-        console.log("Fetch error:", error);
+        console.log("Fetch error:", {
+          message: error.message,
+          stack: error.stack,
+        });
       } finally {
         setLoading(false);
       }
