@@ -16,6 +16,7 @@ const NewsContent = () => {
       setLoading(true);
       try {
         const response = await GetNews();
+        console.log("response", response);
         const data = await response.json();
         console.log("response", response);
         console.log("data", data);
