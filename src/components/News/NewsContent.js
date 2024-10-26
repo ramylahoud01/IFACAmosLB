@@ -16,8 +16,11 @@ const NewsContent = () => {
       setLoading(true);
       try {
         const response = await GetNews();
+        const data = await response.json();
+        console.log("response", response);
+        console.log("data", data);
         if (response.status === 200) {
-          const data = await response.json();
+          // const data = await response.json();
           SetNewslist(data);
         } else {
           console.log("error");
