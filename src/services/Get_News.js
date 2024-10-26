@@ -7,6 +7,7 @@ export const GetNews = async () => {
     method: "GET",
   });
   console.log("response", response);
+  console.log("hyyy");
   const data = await response.json();
   console.log("data", data);
   return response;
