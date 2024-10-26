@@ -6,6 +6,6 @@ export const GetNews = async () => {
     },
     method: "GET",
   });
-
+  console.log("response", response);
   return response;
 };
