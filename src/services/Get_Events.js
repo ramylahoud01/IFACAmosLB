@@ -1,12 +1,8 @@
-export const GetEvents  = async () => {
-
-  
-    const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/events`, {
-      headers: {
-      },
-      method: "GET",
-    });
-  
-    return response;
-  };
-  
+export const GetEvents = async () => {
+  return fetch("https://ifac-backend.vercel.app/events", {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
+};

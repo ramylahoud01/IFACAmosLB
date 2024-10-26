@@ -1,9 +1,8 @@
 export const GetNews = async () => {
-  const response = await fetch(`ifac-backend.vercel.app/news`, {
+  return fetch("https://ifac-backend.vercel.app/news", {
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
-    method: "GET",
   });
-  return response;
 };
