@@ -16,20 +16,18 @@ const NewsContent = () => {
       setLoading(true);
       try {
         const response = await GetNews();
-        console.log("response1111", response);
-        const data = await response.json();
-        console.log("data1", data);
-        console.log("response", response);
-        console.log("hyyy");
-        console.log("data", data);
-        if (response.status === 200) {
-          // const data = await response.json();
+        console.log("Response status:", response.status);
+
+        if (response.ok) {
+          // Only call response.json() once and store the result
+          const data = await response.json();
+          console.log("Data received:", data);
           SetNewslist(data);
         } else {
-          console.log("error");
+          console.log("Error response:", response.status);
         }
       } catch (error) {
-        console.log("error", error);
+        console.log("Fetch error:", error);
       } finally {
         setLoading(false);
       }
