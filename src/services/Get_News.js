@@ -1,6 +1,5 @@
 export const GetNews = async () => {
-  console.log(`${process.env.REACT_APP_API_BASE_URL}/news`, "API");
-  const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/news`, {
+  const response = await fetch(`ifac-backend.vercel.app/news`, {
     headers: {
       "Content-Type": "application/json",
     },
