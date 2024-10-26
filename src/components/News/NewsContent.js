@@ -16,8 +16,9 @@ const NewsContent = () => {
       setLoading(true);
       try {
         const response = await GetNews();
-        console.log("response", response);
+        console.log("response1111", response);
         const data = await response.json();
+        console.log("data1", data);
         console.log("response", response);
         console.log("hyyy");
         console.log("data", data);
@@ -28,7 +29,7 @@ const NewsContent = () => {
           console.log("error");
         }
       } catch (error) {
-        console.log("error");
+        console.log("error", error);
       } finally {
         setLoading(false);
       }
