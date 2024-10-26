@@ -19,6 +19,7 @@ const NewsContent = () => {
         console.log("response", response);
         const data = await response.json();
         console.log("response", response);
+        console.log("hyyy");
         console.log("data", data);
         if (response.status === 200) {
           // const data = await response.json();
