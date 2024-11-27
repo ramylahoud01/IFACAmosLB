@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Typography, Button, TextField, Stack } from "@mui/material";
 import { Form, useNavigate } from "react-router-dom";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -17,6 +17,15 @@ function AddEventsPage() {
       Date: newDate,
     }));
   };
+
+  useEffect(() => {
+    // Check if the auth token is present in localStorage
+    const token = localStorage.getItem("token");
+    if (!token) {
+      // Redirect to login page if no token
+      navigate("/login");
+    }
+  }, [navigate]);
 
   const updateValue = (e, type) => {
     setEvent((prevEventData) => ({

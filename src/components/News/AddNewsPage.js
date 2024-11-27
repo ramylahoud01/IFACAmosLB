@@ -1,5 +1,5 @@
 import { Typography, Button, TextField, Stack } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AddNews } from "../../services/Add_News";
 import { Form, useNavigate } from "react-router-dom";
 import ImageUploader from "../Image/ImageUploader";
@@ -9,12 +9,23 @@ function AddNewsPage() {
   const [image, setImage] = useState(null);
   const [loading, setloading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if the auth token is present in localStorage
+    const token = localStorage.getItem("token");
+    if (!token) {
+      // Redirect to login page if no token
+      navigate("/login");
+    }
+  }, [navigate]);
+
   const updateValue = (e, type) => {
     setNews((prevNewsData) => ({
       ...prevNewsData,
       [type]: e.target.value,
     }));
   };
+
   const HandleAddNews = async (e) => {
     e.preventDefault();
     setloading(true);
