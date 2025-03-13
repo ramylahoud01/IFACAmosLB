@@ -62,54 +62,72 @@ const Home = () => {
     <div>
       <Box
         sx={{
-          // position: "fixed",
+          position: "sticky",
           top: 0,
           left: 0,
           right: 0,
-          padding: "10px 25px",
-          backgroundColor: "rgba(255,255,255,0.8)",
-          boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+          padding: { xs: "8px 16px", md: "10px 25px" },
+          backgroundColor: "rgba(255,255,255,0.9)",
+          backdropFilter: "blur(8px)",
+          boxShadow: "0 2px 10px rgba(0, 0, 0, 0.08)",
           zIndex: 1000,
+          transition: "all 0.3s ease",
         }}
       >
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div>
-            <a href="https://www.ifac-control.org/">
-              <img src={Image} width={140} height={70} />
-            </a>
-          </div>
-          <div
-            style={{
+        <Container maxWidth="lg">
+          <Box
+            sx={{
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: { xs: "center", sm: "space-between" },
               alignItems: "center",
+              flexWrap: { xs: "wrap", sm: "nowrap" },
             }}
           >
-            {sections.map((section) => (
-              <StyledLink
-                key={section.id}
-                to={section.id}
-                smooth={true}
-                duration={500}
-                spy={true}
-              >
-                <Typography
-                  variant="button"
-                  sx={{
-                    marginRight: 2,
-                    fontSize: "20px",
-                    color: "#004953",
-                    fontWeight: "bold",
-                    "&:hover": { color: "#8F9779" },
-                    fontSize: "16px",
-                  }}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: { xs: "center", sm: "flex-start" },
+                alignItems: "center",
+                flexWrap: "wrap",
+                width: { xs: "100%", sm: "auto" },
+              }}
+            >
+              {sections.map((section) => (
+                <StyledLink
+                  key={section.id}
+                  to={section.id}
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  activeClass="active"
                 >
-                  {section.title}
-                </Typography>
-              </StyledLink>
-            ))}
-          </div>
-        </div>
+                  <Typography
+                    variant="button"
+                    sx={{
+                      margin: { xs: "6px 8px", sm: "0 12px" },
+                      fontSize: { xs: "14px", sm: "15px", md: "16px" },
+                      color: "#004953",
+                      fontWeight: "600",
+                      padding: "4px 8px",
+                      borderRadius: "4px",
+                      transition: "all 0.2s ease",
+                      "&:hover": {
+                        color: "#8F9779",
+                        backgroundColor: "rgba(143, 151, 121, 0.08)",
+                      },
+                      "&.active": {
+                        color: "#8F9779",
+                        borderBottom: "2px solid #8F9779",
+                      },
+                    }}
+                  >
+                    {section.title}
+                  </Typography>
+                </StyledLink>
+              ))}
+            </Box>
+          </Box>
+        </Container>
       </Box>
       <div
         style={{
